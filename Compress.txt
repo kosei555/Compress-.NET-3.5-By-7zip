@@ -1,0 +1,21 @@
+private static void Compress(string srcFilePath,string dstFilePath)
+{
+    using (Process prc = new Process())
+    {
+        string programFilePath = "7ZIPへのフルパス(後から引数に入れてもいいよ)";
+        
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = programFilePath,
+            Arguments = $"a \"{dstFilePath}\" \"{srcFilePath}\"",
+            UseShellExecute=false,
+            CreateNoWindow=true
+        };
+        prc.StartInfo=startInfo;
+        Console.WriteLine(prc.StartInfo.FileName);
+        prc.Start();
+        prc.WaitForExit();
+
+    }
+
+}
